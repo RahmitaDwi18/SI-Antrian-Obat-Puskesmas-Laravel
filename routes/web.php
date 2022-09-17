@@ -22,3 +22,24 @@ Route::get('/dashboard', function () {
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+
+// Route::group(['middleware' => ['auth', 'role:admin']], function() {
+//     Route::get('/admin', function() {
+
+//     });
+
+// });
+
+Route::group(['middleware' => ['auth', 'role:dokter']], function() {
+
+    Route::get('/dokter', function() {
+
+    });
+});
+
+Route::group(['middleware' => ['auth', 'role:apoteker']], function() {
+    Route::get('/apoteker', function() {
+
+    });
+});
